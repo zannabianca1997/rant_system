@@ -36,15 +36,18 @@ They are a zip file that contains:
 `assets` contains every file that's not text. The organization is unspecified.
 
 `history` contains all the diffs from the creation of the file. They are utf-8 encoded json file, named as a 16 character unix-timestamp.
-Every file contains a list as the root object. The list enumerate changes to apply in sequence. The file is valid after **all** the changes are applied.
-The fields are dependant on the action. The common ones are:
-- `action`: can be "creation", "version_change", "title_change", "format_change", "content_update", "asset_add", "asset_change", "asset_remove"
-- `last_hash`: the hash of the last diff. Is the base64 encoded sha256 hash of the previous diff file, with the keys sorted and all the whitespaces reduced to a single space. If the action is "creation", this field is `null`  
+Every file contains three keys:
+- `timestamp`: the timestamp
+- `patches`: a list of the patches to apply, in order. The file is valid after **all** the changes are applied.
+- `last_hash`: the hash of the last diff. Is the base64 encoded sha256 hash of the previous diff file, with the keys sorted and the whitespaces reduced to the minimum. If this is the first diff, this field is `null`. 
+
+Every patch is represented by an object. The list enumerate changes to apply in sequence.  
+The main field is `action`, it can be "creation", "version_change", "title_change", "format_change", "content_update", "asset_add", "asset_change", "asset_remove".
 The specific fields are, dependant on `action`:
 - "creation"
     - `version`: the initial content of `rnt_version`
     - `title`: the initial title
-    - `type`: the initial format
+    - `format`: the initial format
 - "version_change"
     - `new_version`
 - "title_change"
