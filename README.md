@@ -23,7 +23,7 @@ They are a zip file that contains:
 
 ### 1.0
 
-`metadata.json` contains a utf-8 formatted json object with basic info about the content. A skeleton is as follow:
+`metadata.json` contains a utf-8 formatted json object with basic info about the content. A skeleton is as follow:  
     {
         "title": "The title of the rant",
         "date": 0000111231231234, # this shold be equal to the last history element timestamp
