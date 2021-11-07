@@ -23,13 +23,15 @@ They are a zip file that contains:
 
 ### 1.0
 
-`metadata.json` contains a utf-8 formatted json object with basic info about the content. A skeleton is as follow:
-    {
-        "title": "The title of the rant",
-        "date": 0000111231231234, # this shold be equal to the last history element timestamp
-        "format": "plaintext", # how content is formatted, "plaintext" or "markdown"
-        "hash": "UJ42rd88iSQcorak65jh7aPgZL0y/17Omuo/7SJZzl0=", # this shold be equal to the last history element hash, as in the diffs field `last_hash`.
-    }
+`metadata.json` contains a utf-8 formatted json object with basic info about the content. A skeleton is as follow:  
+```   
+{
+    "title": "The title of the rant",
+    "date": 0000111231231234, # this shold be equal to the last history element timestamp
+    "format": "plaintext", # how content is formatted, "plaintext" or "markdown"
+    "hash": "UJ42rd88iSQcorak65jh7aPgZL0y/17Omuo/7SJZzl0=", # this shold be equal to the last history element hash, as in the diffs field `last_hash`.
+}
+```
 
 `content[.txt/.md]` contains the current content of the rant, encoded in utf-8. It should be always rebuildable from the history. The extension depends from the content type.
 
